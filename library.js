@@ -31,7 +31,8 @@ const library = {
 // p01: Coding Music - 2 tracks
 // p02: Other Playlist - 1 tracks
 const printPlaylists = function() {
-
+       console.log(`${library.playlists.p01.id}: ${library.playlists.p01.name} - ${library.playlists.p01.tracks.length} Tracks`);
+       console.log(`${library.playlists.p02.id}: ${library.playlists.p02.name} - ${library.playlists.p02.tracks.length} Tracks`);
 }
 
 
@@ -86,3 +87,8 @@ const addPlaylist = function(name) {
 const printSearchResults = function(query) {
 
 }
+
+
+
+
+printPlaylists(library);
