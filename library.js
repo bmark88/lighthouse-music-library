@@ -41,7 +41,9 @@ const printPlaylists = function() {
 // t02: Model View Controller by James Dempsey (WWDC 2003)
 // t03: Four Thirty-Three by John Cage (Woodstock 1952)
 const printTracks = function() {
-
+       console.log(`${library.tracks.t01.id}: ${library.tracks.t01.name} by ${library.tracks.t01.artist} (${library.tracks.t01.album})`);
+       console.log(`${library.tracks.t02.id}: ${library.tracks.t02.name} by ${library.tracks.t02.artist} (${library.tracks.t02.album})`);
+       console.log(`${library.tracks.t03.id}: ${library.tracks.t03.name} by ${library.tracks.t03.artist} (${library.tracks.t03.album})`);
 }
 
 
@@ -91,4 +93,5 @@ const printSearchResults = function(query) {
 
 
 
-printPlaylists(library);
+// printPlaylists(library);
+printTracks(library);
