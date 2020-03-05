@@ -83,7 +83,9 @@ const printPlaylist = function(playlistId) {
 
 // adds an existing track to an existing playlist
 const addTrackToPlaylist = function(trackId, playlistId) {
+       library.playlists[playlistId].tracks.push(trackId)
 
+       console.log(library.playlists[playlistId].tracks)
 }
 
 
@@ -96,13 +98,34 @@ const generateUid = function() {
 
 // adds a track to the library
 const addTrack = function(name, artist, album) {
+       const newTrack = generateUid();
+       
+       if (!library.tracks.hasOwnProperty(newTrack)) {
+              // console.log(newTrack);
+              library.tracks[newTrack] = {
+                     id: newTrack,
+                     name: name,
+                     artist: artist,
+                     album: album
+              };
+       }
 
+       return library;
 }
 
 
 // adds a playlist to the library
 const addPlaylist = function(name) {
+       const newPlaylist = generateUid();
+       if (!library.playlists[name]) {
+              library.playlists[name] = {
+                     id: name,
+                     name: "Custom Playlist",
+                     tracks: ["t01", "t03"]
+              }
+       }
 
+       return library;
 }
 
 
@@ -118,7 +141,8 @@ const printSearchResults = function(query) {
 
 // printPlaylists(library);
 // printTracks(library);
-printPlaylist('p01');
-// addTrackToPlaylist(name, artist, album);
-// addPlaylist(name);
-// printSearchResults(query);
+// printPlaylist('p01');
+// addTrackToPlaylist('t03', 'p01');
+// addTrack('🔥 Fire Track', 'Eminem', 'Music to Be Murdered By');
+// addPlaylist('p03');
+// printSearchResults(query); // STRETCH WORK
