@@ -31,8 +31,15 @@ const library = {
 // p01: Coding Music - 2 tracks
 // p02: Other Playlist - 1 tracks
 const printPlaylists = function() {
-       console.log(`${library.playlists.p01.id}: ${library.playlists.p01.name} - ${library.playlists.p01.tracks.length} Tracks`);
-       console.log(`${library.playlists.p02.id}: ${library.playlists.p02.name} - ${library.playlists.p02.tracks.length} Tracks`);
+       const lp = library.playlists;
+
+       for (let key in library["playlists"]) {
+              const id = lp[key].id;
+              const name = lp[key].name;
+              const tracksLength = lp[key].tracks.length;
+
+              console.log(`${id}: ${name} - ${tracksLength} Tracks`);
+       }
 }
 
 
@@ -41,9 +48,16 @@ const printPlaylists = function() {
 // t02: Model View Controller by James Dempsey (WWDC 2003)
 // t03: Four Thirty-Three by John Cage (Woodstock 1952)
 const printTracks = function() {
-       console.log(`${library.tracks.t01.id}: ${library.tracks.t01.name} by ${library.tracks.t01.artist} (${library.tracks.t01.album})`);
-       console.log(`${library.tracks.t02.id}: ${library.tracks.t02.name} by ${library.tracks.t02.artist} (${library.tracks.t02.album})`);
-       console.log(`${library.tracks.t03.id}: ${library.tracks.t03.name} by ${library.tracks.t03.artist} (${library.tracks.t03.album})`);
+       const t = library.tracks;
+       
+       for (let key in library["tracks"]) {
+              const id = t[key].id
+              const name = t[key].name;
+              const artist = t[key].artist;
+              const album = t[key].album;
+
+              console.log(`${id}: ${name} by ${artist} (${album})`);
+       }
 }
 
 
@@ -52,7 +66,18 @@ const printTracks = function() {
 // t01: Code Monkey by Jonathan Coulton (Thing a Week Three)
 // t02: Model View Controller by James Dempsey (WWDC 2003)
 const printPlaylist = function(playlistId) {
-
+       const id = library.playlists[playlistId].id
+       const name = library.playlists[playlistId].name
+       const tracks = library.playlists[playlistId].tracks
+       
+       console.log(`${id}: ${name} - ${tracks.length} tracks`)
+       
+       for (let keyTrack of tracks) {
+              const name = library.tracks[keyTrack].name;
+              const artist = library.tracks[keyTrack].artist;
+              const album = library.tracks[keyTrack].album;
+              console.log(`${keyTrack}: ${name} by ${artist} (${album})`);
+       }
 }
 
 
@@ -91,7 +116,9 @@ const printSearchResults = function(query) {
 }
 
 
-
-
 // printPlaylists(library);
-printTracks(library);
+// printTracks(library);
+printPlaylist('p01');
+// addTrackToPlaylist(name, artist, album);
+// addPlaylist(name);
+// printSearchResults(query);
